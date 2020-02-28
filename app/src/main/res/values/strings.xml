@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="enter_city">Enter City</string>
+    <string name="enter_valid_city">Please enter City</string>
+    <string name="weekly_forecast">Weekly Forecast</string>
+    <string name="enter_city_and_press_done_in_keyboard_to_fetch_weather_information">Enter City and press Done in keyboard to fetch weather information</string>
+    <string name="retry">Fail to get Data.Please Try again</string>
 </resources>

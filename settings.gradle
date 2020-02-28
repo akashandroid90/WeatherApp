@@ -1,2 +1,2 @@
-rootProject.name='Weather App'
-include ':app'
+rootProject.name = 'Weather App'
+include ':app', ':apidata', ':apidomain'

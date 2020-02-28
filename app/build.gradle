@@ -11,20 +11,30 @@ android {
         targetSdkVersion targetsdk
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
+        resConfigs "en"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "WEATHER_APP_ID", '"498e59f30dbcaccc6bb066cd0d005260"'
+        buildConfigField "String", "BASE_URL", '"http://api.openweathermap.org"'
     }
 
+    dataBinding {
+        enabled = true
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
+    implementation project(path: ':apidomain')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:' + appcompatx
@@ -44,4 +54,20 @@ dependencies {
     implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$binding_collection_adapter_version"
     implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:$binding_collection_adapter_version"
 
+    //Viewmodel and lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:' + android_lifecycle
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:' + android_lifecycle
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + kotlinx_coroutines
+
+    // retrofit
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_Logging_Version"
+
+    /* Glide lib for image loading  */
+    implementation 'com.github.bumptech.glide:glide:' + glide_version
+    kapt 'com.github.bumptech.glide:compiler:' + glide_version
+
+    implementation 'com.intuit.ssp:ssp-android:' + dimen_version
+    implementation 'com.intuit.sdp:sdp-android:' + dimen_version
 }
