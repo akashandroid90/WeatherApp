@@ -26,7 +26,7 @@ class HomeActivity : AppBaseActivity<ActivityHomeBinding, HomeViewModel>() {
             } else dialog?.dismiss()
         })
         viewModel.showMessage.observe(this, Observer {
-            if (it.isNullOrEmpty())
+            if (!it.isNullOrEmpty())
                 it.toast(this)
         })
     }
