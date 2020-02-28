@@ -4,7 +4,7 @@ Run Application to get weather info with city name.
 
 # PreRequisites
 
-1. Android Studio: 3.4.2 or above
+1. Android Studio: 3.6 or above
 2. Gradle: 5.6.4
 
 
