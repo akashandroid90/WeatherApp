@@ -16,6 +16,7 @@ import lib.apidata.repository.HomeRepo
 import lib.apidata.response.Result
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
+import java.util.*
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(val context: Context, val api: HomeRepo) :
@@ -41,8 +42,10 @@ class HomeViewModel @Inject constructor(val context: Context, val api: HomeRepo)
                     dataList.update(it.weather)
                 }
                 is Result.Error -> {
-                    result.exception.message?.let { Logger.e(it) }
+                    data.set(null)
+                    dataList.update(Collections.emptyList())
                     context.getString(R.string.retry).toast(context)
+//                    result.exception.message?.let { Logger.e(it) }
                 }
             }
             showProgress.postValue(false)
