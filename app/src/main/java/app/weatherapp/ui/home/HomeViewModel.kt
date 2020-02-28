@@ -7,8 +7,7 @@ import app.weatherapp.BR
 import app.weatherapp.BuildConfig
 import app.weatherapp.R
 import app.weatherapp.ui.base.BaseViewModel
-import app.weatherapp.utils.Logger
-import app.weatherapp.utils.toast
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import lib.apidata.data.Weather
 import lib.apidata.data.WeatherData
@@ -28,11 +27,11 @@ class HomeViewModel @Inject constructor(val context: Context, val api: HomeRepo)
         ItemBinding.of<Weather>(BR.data, R.layout.adapter_weather)
     }
 
-    fun fetchWeather() {
-        viewModelScope.launch {
+    fun fetchWeather() :Job{
+        return viewModelScope.launch {
             val city = city.get()
             if (city.isNullOrBlank()) {
-                context.getString(R.string.enter_valid_city).toast(context)
+                showMessage.postValue(context.getString(R.string.enter_valid_city))
                 return@launch
             }
             showProgress.postValue(true)
@@ -44,7 +43,7 @@ class HomeViewModel @Inject constructor(val context: Context, val api: HomeRepo)
                 is Result.Error -> {
                     data.set(null)
                     dataList.update(Collections.emptyList())
-                    context.getString(R.string.retry).toast(context)
+                    showMessage.postValue(context.getString(R.string.retry))
 //                    result.exception.message?.let { Logger.e(it) }
                 }
             }

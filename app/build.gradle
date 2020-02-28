@@ -70,4 +70,12 @@ dependencies {
 
     implementation 'com.intuit.ssp:ssp-android:' + dimen_version
     implementation 'com.intuit.sdp:sdp-android:' + dimen_version
+
+
+//    // Test Dependencies
+    testImplementation 'org.mockito:mockito-core:' + mockito_version
+    testImplementation 'org.mockito:mockito-inline:' + mockito_version
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_webserver_version"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:' + kotlinx_coroutines
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
 }

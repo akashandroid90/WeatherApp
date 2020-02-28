@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import app.weatherapp.R
 import app.weatherapp.databinding.ActivityHomeBinding
 import app.weatherapp.ui.base.AppBaseActivity
+import app.weatherapp.utils.toast
 
 class HomeActivity : AppBaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override val layoutId: Int = R.layout.activity_home
@@ -23,6 +24,10 @@ class HomeActivity : AppBaseActivity<ActivityHomeBinding, HomeViewModel>() {
                         dialog.window?.setBackgroundDrawable(null)
                     }
             } else dialog?.dismiss()
+        })
+        viewModel.showMessage.observe(this, Observer {
+            if (it.isNullOrEmpty())
+                it.toast(this)
         })
     }
 

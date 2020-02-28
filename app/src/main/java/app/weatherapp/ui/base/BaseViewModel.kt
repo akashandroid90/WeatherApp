@@ -10,4 +10,5 @@ abstract class BaseViewModel : ViewModel() {
     @ClickActionEvents
     val navigateScreeen = SingleLiveEvent<String>()
     val showProgress = MutableLiveData(false)
+    val showMessage = SingleLiveEvent<String>()
 }
